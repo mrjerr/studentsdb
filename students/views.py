@@ -3,7 +3,21 @@ from django.http import HttpResponse
 
 # Create your views here.
 def students_list(request):
-    return render(request, 'students/students_list.html', {})
+    students = (
+        dict(
+            id=1,
+            first_name="Иван",
+            last_name="Петров",
+            ticket=235,
+            image='img/me.jpeg'),
+        dict(
+            id=2,
+            first_name="Петр",
+            last_name="Иванов",
+            ticket=236,
+            image='img/piv.png')
+    )
+    return render(request, 'students/students_list.html', {'students':students})
 
 def students_add(request):
     return HttpResponse('<h1>Student add form</h1>')
