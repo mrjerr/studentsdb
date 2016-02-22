@@ -1,0 +1,58 @@
+{% extends "students/base.html" %}
+
+{% load static from staticfiles%}
+
+{% block meta_title %}Учет посещаемости{% endblock meta_title %}
+
+{% block title %}Учет посещаемости{% endblock title %}
+
+{% block content %}
+<!--Start Main Page Content-->
+                <div class="col-md-4 col-md-offset-5">
+                    <p id="attendance-month">
+                        <a href="#" aria-label="Previous">&larr;</a>
+                        Декабрь 2016
+                        <a href="#" aria-label="Next">&rarr;</a>
+                    </p>
+                </div>
+                <div class="col-md-12 table-responsive">
+                <table class="table table-hover table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                    {% for i in th %}
+                        <th> {{i}}</th>
+                    {% endfor %}
+                    </tr> 
+                  </thead>
+                  <tbody>
+                    {% for i in journal %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><a title="Редактировать" href="{% url "students_edit" i.id %}">{{i.name}}</a></td>
+                        {% for i in i.journal %}
+                            <td><input type="checkbox" 
+                            {% if i %}
+                            checked
+                            {% endif %}></td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                </div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
