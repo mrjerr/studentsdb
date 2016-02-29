@@ -11,3 +11,6 @@ class Student(models.Model):
 	photo = models.ImageField(blank=True, verbose_name = "Фото", null=True)
 	ticket = models.CharField(max_length=256, blank=True, verbose_name = "Билет")
 	notes = models.TextField(blank=True, verbose_name = "Дополнительные сведения")
+
+	def __str__(self):
+		return '{0} - {1}'.format(self.first_name, self.last_name)
